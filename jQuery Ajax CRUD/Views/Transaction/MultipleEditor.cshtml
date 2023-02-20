@@ -1,0 +1,122 @@
+﻿@using jQuery_Ajax_CRUD.Models.ViewModels;
+@model dynamic;
+
+
+@{
+    ViewBag.Title = "Home Page";
+}
+<h2>@ViewBag.Message</h2>
+
+
+<style>
+.zoom {
+  padding: 0px;
+  background-color: transparent;
+  transition: transform .3s; /* Animation */
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.zoom:hover {
+  transform: scale(1.7); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+</style>
+
+<div class="zoom">
+    
+    <svg width="190" height="160" xmlns="http://www.w3.org/2000/svg">
+        
+  <path d="M 10 10 C 20 20, 40 20, 50 10" stroke="black" fill="transparent"/>
+  <path d="M 70 10 C 70 20, 110 20, 110 10" stroke="black" fill="transparent"/>
+  <path d="M 130 10 C 120 20, 180 20, 170 10" stroke="black" fill="transparent"/>
+  <path d="M 10 60 C 20 80, 40 80, 50 60" stroke="black" fill="transparent"/>
+  <path d="M 70 60 C 70 80, 110 80, 110 60" stroke="black" fill="transparent"/>
+  <path d="M 130 60 C 120 80, 180 80, 170 60" stroke="black" fill="transparent"/>
+  <path d="M 10 110 C 20 140, 40 140, 50 110" stroke="black" fill="transparent"/>
+  <path d="M 70 110 C 70 140, 110 140, 110 110" stroke="black" fill="transparent"/>
+  <path d="M 130 110 C 120 140, 180 140, 170 110" stroke="black" fill="transparent"/>
+  <div class="text">qweqweqwe</div>
+</svg>
+
+</div>
+<div class="zoom">
+    <div class="text">qweqweqwe</div>
+    <svg width="190" height="160" xmlns="http://www.w3.org/2000/svg">
+
+  <path d="M 10 10 C 20 20, 40 20, 50 10" stroke="black" fill="transparent"/>
+  <path d="M 70 10 C 70 20, 110 20, 110 10" stroke="black" fill="transparent"/>
+  <path d="M 130 10 C 120 20, 180 20, 170 10" stroke="black" fill="transparent"/>
+  <path d="M 10 60 C 20 80, 40 80, 50 60" stroke="black" fill="transparent"/>
+  <path d="M 70 60 C 70 80, 110 80, 110 60" stroke="black" fill="transparent"/>
+  <path d="M 130 60 C 120 80, 180 80, 170 60" stroke="black" fill="transparent"/>
+  <path d="M 10 110 C 20 140, 40 140, 50 110" stroke="black" fill="transparent"/>
+  <path d="M 70 110 C 70 140, 110 140, 110 110" stroke="black" fill="transparent"/>
+  <path d="M 130 110 C 120 140, 180 140, 170 110" stroke="black" fill="transparent"/>
+
+</svg>
+
+</div>
+
+<p><b>Syncs Table</b></p>
+
+
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Numara</th>
+        <th>Adı</th>
+        <th>Soyadı</th>
+        <th>Doğum Tarihi</th>
+        <th>Cinsiyeti</th>
+    </tr>
+    @foreach ( SyncModel sync in Model.Syncs)
+    {
+        <tr>
+            <td>@sync.ID</td>
+            <td>@sync.Numara</td>
+            <td>@sync.Adi</td>
+            <td>@sync.Soyadi</td>
+            <td>@sync.DogumTarihi</td>
+            <td>@sync.Cinsiyeti</td>
+        </tr>
+    }
+</table>
+
+<p><b>Syncs1 Table</b></p>
+
+<table class="table table-dark ">
+    <thead class="thead-light">
+    <tr>
+        <th>ID</th>
+        <th>Adı</th>
+        <th>Soyadı</th>
+        <th>Hanesi</th>
+        <th>Maaşı</th>
+        <th>Ay Sayısı</th>
+    </tr>
+    </thead>
+    @foreach (SyncModel1 sync1 in Model.Syncs1)
+    {
+        <tr>
+            <td>@sync1.ID</td>
+            <td>@sync1.Adi</td>
+            <td>@sync1.Soyadi</td>
+            <td>@sync1.Hanesi</td>
+            <td>@sync1.Maasi</td>
+            <td>@sync1.AySayisi</td>
+        </tr>
+    }
+</table>
+
+
+
+
+
+<div class="col-md-offset-2 col-md-10">  
+                <input type="submit" value="Sync" id="Sync" class="btn btn-primary" onclick="location.href='@Url.Action("SyncCommand")'" />  
+            </div>  
+
+
+
+

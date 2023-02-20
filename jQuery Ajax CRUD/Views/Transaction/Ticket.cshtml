@@ -1,0 +1,36 @@
+﻿@model IEnumerable<jQuery_Ajax_CRUD.Models.TicketModel>
+
+@{
+    ViewData["Title"] = "Ticket";
+}
+
+
+
+
+<div id="view-all">
+    @await Html.PartialAsync("_Ticket", Model)
+</div>
+
+
+<div class="modal fade" tabindex="-1" role="dialog" id="form-modal"draggable="true">
+    <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="false">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

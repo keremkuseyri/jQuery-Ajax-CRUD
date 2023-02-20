@@ -1,0 +1,137 @@
+﻿@model IEnumerable<jQuery_Ajax_CRUD.Models.TeachersModel>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .dropbtn {
+            background-color: #04AA6D;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+
+            .dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+                .dropdown-content a:hover {
+                    background-color: #ddd;
+                }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="dropdown">
+        <button class="dropbtn">Classes</button>
+        <div class="dropdown-content">
+            <a href="TeacherslistA">ClassA</a>
+            <a href="TeacherslistB">ClassB</a>
+            <a href="TeacherslistC">ClassC</a>
+        </div>
+    </div>
+
+</body>
+
+
+
+<div class="col-md-8 offset-md-2">
+
+    <h1 class="text-center"> <i class="fa-solid fa-chalkboard-user"></i>Teacher Registry Form</h1>
+
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model=>model.DateOfBirth)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.Gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+
+                </th>
+
+
+                <th>
+                    <a onclick="showInPopup('@Url.Action("AddOrEditT","Transaction",null,Context.Request.Scheme)','Teacher Registry')" class="btn btn-success text-white"><i class="fas fa-plus"></i> New Registry</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem=>item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem=>item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+
+                    <td>
+                        <div>
+                      
+                            <a onclick="showInPopup('@Url.Action("AddOrEditT","Transaction",new {id=item.ID},Context.Request.Scheme)','Edit Registry')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Edit</a>
+                            <form asp-action="DeleteT" asp-route-id="@item.ID" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                <input type="hidden" asp-for="@item.ID" />
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </form>
+                            <a onclick="showInPopup('@Url.Action("ChangeClassT","Transaction",new {id=item.ID},Context.Request.Scheme)','Change Class')" class="btn btn-success text-white"> Move</a>
+
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+

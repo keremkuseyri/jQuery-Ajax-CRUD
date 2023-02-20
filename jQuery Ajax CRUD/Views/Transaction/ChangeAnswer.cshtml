@@ -1,0 +1,41 @@
+﻿@model jQuery_Ajax_CRUD.Models.TestModel
+
+@{ Layout = null; }
+
+
+        
+        <form asp-action="ChangeAnswer" asp-route-id="@Model.TestID" onsubmit="return jQueryAjaxPost(this);">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TestID" />
+            <input type="hidden" asp-for="QNumber" />
+            <input type="hidden" asp-for="QText"/>
+            <input type="hidden" asp-for="QAnswer"/>
+            <input type="hidden" asp-for="option1"/>
+            <input type="hidden" asp-for="option2"/>   
+            <input type="hidden" asp-for="option3"/>
+            <input type="hidden" asp-for="option4"/>
+
+           
+ <div class="form-group">
+                <label asp-for="StdAnswer" class="control-label"></label>
+               
+                <div class="form-group">
+                    
+                    
+                    <input type="radio" value="@Model.option1" asp-for="StdAnswer"/><b>A | @Model.option1</b><br>
+                     <input type="radio"  value="@Model.option2" asp-for="StdAnswer"/><b>B | @Model.option2</b><br>
+                      <input type="radio"  value="@Model.option3" asp-for="StdAnswer"/><b>C | @Model.option3</b><br>
+                       <input type="radio" value="@Model.option4" asp-for="StdAnswer"/><b>D | @Model.option4</b><br>
+                </div>
+                
+
+                
+                <span asp-validation-for="StdAnswer" class="text-danger"></span>
+            
+            
+                <div class="col-md-6 offset-md-3">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block"id="btn5"/>
+                </div>
+            </div>
+        </form>
+    

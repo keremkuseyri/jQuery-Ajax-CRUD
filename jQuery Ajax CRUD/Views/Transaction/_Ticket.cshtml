@@ -1,0 +1,98 @@
+﻿
+@model IEnumerable<jQuery_Ajax_CRUD.Models.TicketModel>
+
+     <div class="col-md-8 offset-md-2">
+
+        <h1 class="text-center"> <i class="fas fa-question"></i>Support Tickets</h1>
+
+
+        <table class="table table-hover">
+            <thead class="">
+                <tr>
+                    <th>
+                       @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+                     
+                    <th>
+                      Header
+                    </th>
+                    <th>
+                        Content
+                    </th>
+                    <th>                              
+                       Answer
+                    </th>
+                    <th>
+                     @Html.DisplayNameFor(model => model.Date)
+                     </th>
+                     <th>
+                         @Html.DisplayNameFor(model => model.Condition)
+                     </th>
+                      <th>
+                        <a onclick="showInPopup('@Url.Action("AddorEditTicket","Transaction",null,Context.Request.Scheme)','New Ticket')" class="btn btn-success text-white"><i class="fas fa-plus"></i> New Ticket</a>
+                    </th>
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                <tr>
+                         <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+                             <div class="card" style="width:22rem;">
+                            <div class="card-body">
+                                <p class="card-text text-dark font-weight-bold">
+                           @Html.DisplayFor(modelItem=>item.TicketHeader)
+                           </p>
+                            </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="card" style="width:22rem;">
+                            <div class="card-body">
+                                <p class="card-text text-dark">
+                                    @Html.DisplayFor(modelItem=>item.TicketContent)
+                                </p>
+                            </div>
+                            </div>
+                            
+                        </td>
+                        <td>
+                            <div class="card" style="width:22rem;">
+                            <div class="card-body">
+                                <p class="card-text text-dark">
+                            @Html.DisplayFor(modelItem => item.TicketAnswer)
+                            </p>
+                            </div>
+                            </div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Condition)
+                        </td>
+                       
+                        
+                       
+
+                       <td>
+                            <div>
+                                <a onclick="showInPopup('@Url.Action("AddorEditTicket","Transaction",new {id=item.Id},Context.Request.Scheme)','Edit Ticket')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Answer</a>
+                               <form asp-action="DeleteTicket" asp-route-id="@item.Id" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                    <input type="hidden" asp-for="@item.Id" />
+                                    <input type="submit" value="Delete" class="btn btn-danger" />
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+

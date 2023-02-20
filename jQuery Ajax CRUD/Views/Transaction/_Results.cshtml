@@ -1,0 +1,64 @@
+﻿@model IEnumerable<jQuery_Ajax_CRUD.Models.TestResults>
+
+
+<div class="col-md-8 offset-md-2">
+
+    <h1 class="text-center"> <i class="fas fa-user-graduate"></i>Test Editor</h1>
+
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+               
+                <td>
+                    ID
+                </td>
+                <td>
+                    Number
+                </td>
+                <td>
+                    Name
+                </td>
+                <td>
+                    Score
+                </td>
+                <td>
+                    TestScore
+                </td>
+                <td>
+                    Note
+                </td>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+              <td>
+                  @item.ResultID
+              </td>
+              <td>
+                  @item.StdNumber
+              </td>
+              <td>
+                  @item.StdName
+              </td>
+              <td>
+                  @item.Score
+              </td>
+              <td>
+                  @item.TestScore
+              </td>
+              <td>
+                  @item.Note
+              </td>
+
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

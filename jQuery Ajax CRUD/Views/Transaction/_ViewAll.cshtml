@@ -1,0 +1,102 @@
+﻿@model IEnumerable<jQuery_Ajax_CRUD.Models.TransactionModel>
+
+   
+   <form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default" /> |&nbsp;
+            <a asp-action="Index">Back to Full List</a>
+        </p>
+    </div>
+</form>
+
+
+    
+    <div class="col-md-8 offset-md-2">
+
+        <h1 class="text-center"> <i class="fas fa-user-graduate"></i>Student Registry Form</h1>
+
+
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                          <a asp-action="Index" asp-route-sortOrder="@ViewData["NumberSortParm"]">@Html.DisplayNameFor(model => model.Amount)
+                    </a>
+                   
+                        </th>
+                     
+                    <th>
+                         <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model=>model.SWIFTCode)</a>
+                    </th>
+                    <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["GenderSortParm"]">@Html.DisplayNameFor(model=>model.BankName)</a>
+                    </th>
+                    <th>                              
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.AccountNumber)</a>
+                    </th>
+                    <th>
+                     <a asp-action="Index" asp-route-sortOrder="@ViewData["SurnameSortParm"]">@Html.DisplayNameFor(model => model.BeneficiaryName)</a>
+                     </th>
+                     <th>
+                        <a asp-action="Index" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model => model.Date)
+                    </a>
+                        </th>
+                    <th>
+                                           <a asp-action="Index" asp-route-sortOrder="@ViewData["NumberSortParm"]"> @Html.DisplayNameFor(model => model.Age)</a>
+
+                    </th>
+                    
+                       <th>
+                        <a onclick="showInPopup('@Url.Action("AddOrEdit","Transaction",null,Context.Request.Scheme)','Student Registry')" class="btn btn-success text-white"><i class="fas fa-plus"></i> New Registry</a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                <tr>
+                         <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem=>item.SWIFTCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem=>item.BankName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BeneficiaryName)
+                        </td>
+                       
+                        
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Age)
+                        </td>
+
+                        <td>
+                            <div>
+                                <a onclick="showInPopup('@Url.Action("AddOrEdit","Transaction",new {id=item.TransactionId},Context.Request.Scheme)','Edit Registry')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Edit</a>
+                                <form asp-action="Delete" asp-route-id="@item.TransactionId" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                    <input type="hidden" asp-for="@item.TransactionId" />
+                                    <input type="submit" value="Delete" class="btn btn-danger" />
+                                </form>
+                                <a onclick="showInPopup('@Url.Action("ChangeClass","Transaction",new {id=item.TransactionId},Context.Request.Scheme)','Change Class')" class="btn btn-success text-white"> Move</a>
+          
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+

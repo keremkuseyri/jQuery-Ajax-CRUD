@@ -1,0 +1,81 @@
+﻿@model IEnumerable<jQuery_Ajax_CRUD.Models.LessonsModel>
+
+
+
+
+
+
+<div class="col-md-8 offset-md-2">
+
+    <h1 class="text-center"> <i class="fas fa-user-graduate"></i>LessonsList</h1>
+
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model=>model.Teacher)
+
+                </th>
+                
+                <th>
+                    @Html.DisplayNameFor(model=>model.Class)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.A)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClassStart)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ClassEnd)
+
+                </th>
+
+
+                <th>
+                    <a onclick="showInPopup('@Url.Action("AddOrEditL","Transaction",null,Context.Request.Scheme)','Lesson Registry')" class="btn btn-success text-white"><i class="fas fa-plus"></i> New Lesson</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                <td>
+                       
+                        @Html.DisplayFor(modelItem=>item.Teacher)
+
+                        
+                    </td>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem=>item.Class)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.A)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClassStart)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ClassEnd)
+                    </td>
+
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+

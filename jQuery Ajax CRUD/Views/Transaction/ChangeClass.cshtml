@@ -1,0 +1,40 @@
+﻿@model jQuery_Ajax_CRUD.Models.TransactionModel
+
+@{ Layout = null; }
+
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="ChangeClass" asp-route-id="@Model.TransactionId" onsubmit="return jQueryAjaxPost(this);">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TransactionId" />
+            <input type="hidden" asp-for="Date" />
+            <input type="hidden" asp-for="AccountNumber"/>
+            <input type="hidden" asp-for="BeneficiaryName"/>
+            <input type="hidden" asp-for="BankName"/>
+            <input type="hidden" asp-for="SWIFTCode"/>   
+            <input type="hidden" asp-for="Amount"/>
+            <input type="hidden" asp-for="Age"/>
+ <div class="form-group">
+                <label asp-for="Class" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        
+                    </div>
+                    <select asp-for="Class">
+                    <option value= "1">ClassA</option>
+                    <option value="2">ClassB</option>
+                    <option value="3">ClassC</option>
+                </select> 
+
+                </div>
+                <span asp-validation-for="Class" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6 offset-md-3">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

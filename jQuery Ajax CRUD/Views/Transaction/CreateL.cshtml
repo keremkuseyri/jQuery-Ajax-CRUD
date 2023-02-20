@@ -1,0 +1,55 @@
+﻿
+@model jQuery_Ajax_CRUD.Models.LessonsModel
+
+@{
+    ViewData["Title"] = "CreateL";
+}
+
+<h1>CreateL</h1>
+
+<h4>LessonsModel</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="CreateT">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Teacher" class="control-label"></label>
+                <input asp-for="Teacher" class="form-control" />
+                <span asp-validation-for="Teacher" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="A" class="control-label"></label>
+                <input asp-for="A" class="form-control" />
+                <span asp-validation-for="A" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Class" class="control-label"></label>
+                <input asp-for="Class" class="form-control" />
+                <span asp-validation-for="Class" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassStart" class="control-label"></label>
+                <input asp-for="ClassStart" class="form-control" />
+                <span asp-validation-for="ClassStart" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassEnd" class="control-label"></label>
+                <input asp-for="ClassEnd" class="form-control" />
+                <span asp-validation-for="ClassEnd" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Lessonslist">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

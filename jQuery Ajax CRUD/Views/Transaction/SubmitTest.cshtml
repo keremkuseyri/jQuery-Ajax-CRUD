@@ -1,0 +1,47 @@
+﻿@model jQuery_Ajax_CRUD.Models.TestResults
+
+
+@{ Layout = null; }
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="SubmitTest" asp-route-id="@Model.ResultID" onsubmit="return jQueryAjaxPost(this);">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ResultID" />
+         <input type="hidden" asp-for="Note" />
+         <input type="hidden" asp-for="Score"/>
+         
+            
+           
+          <div class="form-group">
+                <label asp-for="StdNumber"class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        
+                    </div>
+                    <input asp-for="StdNumber" class="form-control" />
+                </div>
+                <span asp-validation-for="StdNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="StdName" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        
+                    </div>
+                    <input asp-for="StdName" class="form-control" />
+                </div>
+                <span asp-validation-for="StdName" class="text-danger"></span>
+            </div>
+
+
+
+                          
+            <div class="form-group">
+                <div class="col-md-6 offset-md-3">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

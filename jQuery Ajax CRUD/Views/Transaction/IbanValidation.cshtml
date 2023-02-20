@@ -1,0 +1,72 @@
+﻿
+<!DOCTYPE html>
+<html>
+    <body>
+       
+<input type="text" class="col-lg-10 form-control-lg" id="input" /></input>&nbsp;&nbsp;
+<button class="btn-lg btn-primary" style="background:#7c5295" onclick="alertValidIBAN(input);">Validate IBAN</button>
+    </body>
+   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+ 
+        
+   function alertValidIBAN(iban) {
+     
+    Swal.fire(isValidIBANNumber(iban));
+    
+    
+    
+    
+}
+
+/*
+ * Returns 1 if the IBAN is valid 
+ * Returns FALSE if the IBAN's length is not as should be (for CY the IBAN Should be 28 chars long starting with CY )
+ * Returns any other number (checksum) when the IBAN is invalid (check digits do not match)
+ */
+
+
+//function findinput(){
+    
+//     document.getElementById('test').value= input;
+//     return input;
+//}
+
+function isValidIBANNumber(input) {
+    
+  var input=document.getElementById("input").value;
+    var CODE_LENGTHS = {
+         TR:26       
+    };
+    var iban = String(input).toUpperCase().replace(/[^A-Z0-9]/g, ''); // keep only alphanumeric characters
+     var  code = iban.match(/^([A-Z]{2})(\d{2})([A-Z\d]+)$/); // match and capture (1) the country code, (2) the check digits, and (3) the rest
+       var     digits;
+    // check syntax and length
+    if (!code || iban.length !== CODE_LENGTHS[code[1]]) {
+        
+        return "Your IBAN has to be 26 digits including your country code";
+    }
+    // rearrange country code and check digits, and convert chars to ints
+    digits = (code[3] + code[1] + code[2]).replace(/[A-Z]/g, function (letter) {
+        return letter.charCodeAt(0) - 55;
+    });
+    // final check
+    return mod97(digits);
+}
+
+function mod97(string) {
+    var checksum = string.slice(0, 2), fragment;
+    for (var offset = 2; offset < string.length; offset += 7) {
+        fragment = String(checksum) + string.substring(offset, offset + 7);
+        checksum = parseInt(fragment, 10) % 97;
+    }
+    if (checksum!==1)
+   { return "Your checksum mod97 division needs to be 1 but it is :"+checksum;}
+    else 
+    return "Valid Iban!"            }
+    </script>
+
+</html>
+
+
+

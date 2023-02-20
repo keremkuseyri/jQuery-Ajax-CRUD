@@ -1,0 +1,80 @@
+﻿@model jQuery_Ajax_CRUD.Models.TicketModel
+
+
+@{ Layout = null; }
+
+
+    
+        <form asp-action="AddorEditTicket" asp-route-id="@Model.Id" onsubmit="return jQueryAjaxPost(this);">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="Date" />
+            
+            <div class="row">
+            <div class="col-md-12"style="position:center;">
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <div class="input-group">
+                   
+                     
+                    
+                    <input asp-for="UserName" class="form-control" />
+                    </div>
+                    
+                
+                <span asp-validation-for="UserName" class="text-danger"></span>
+                
+            </div>
+            </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="TicketHeader" class="control-label"></label>
+                        <input asp-for="TicketHeader" class="form-control" />
+                        <span asp-validation-for="TicketHeader" class="text-danger"></span>
+                    </div>
+                </div>
+                </div>
+                 <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="TicketContent" class="control-label"></label>
+                        <input asp-for="TicketContent" class="form-control" />
+                        <span asp-validation-for="TicketContent" class="text-danger"></span>
+                    </div>
+                </div>
+                </div>
+            
+            <div class="row">
+                <div class="col-md-12">
+                
+                    <div class="form-group">
+                        <label asp-for="TicketAnswer" class="control-label"></label>
+                       <input asp-for="TicketAnswer"   class="form-control"  />
+                        <span asp-validation-for="TicketAnswer" class="text-danger"></span>
+                    
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                 <div class="col-md-12">
+                    <div class="form-group">
+                        <label asp-for="Condition" class="control-label"></label>
+                        <select asp-for="Condition" class="form-control" >
+        <option value="">-Select Condition-</option>
+        <option value="In Queue">In Queue</option>
+        <option value="In Process">In Process</option>
+        <option value="Done">Done</option>
+        </select>
+                        
+                    </div>
+                    </div>
+                </div>
+          
+            <div class="form-group">
+                <div class="col-md-6 offset-md-3">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+                </div>
+            </div>
+        </form>

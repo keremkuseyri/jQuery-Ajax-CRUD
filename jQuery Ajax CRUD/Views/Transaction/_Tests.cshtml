@@ -1,0 +1,83 @@
+﻿@model IEnumerable<jQuery_Ajax_CRUD.Models.TestModel>
+
+
+<div class="col-md-8 offset-md-2">
+
+    <h1 class="text-center"> <i class="fas fa-user-graduate"></i>Test Editor</h1>
+
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.QNumber)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.QText)
+
+                </th>
+                
+                <th>
+                    @Html.DisplayNameFor(model=>model.QAnswer)
+                </th>
+                <th>
+                    options
+                </th>
+
+
+
+
+
+
+                <th>
+                    <a onclick="showInPopup('@Url.Action("AddOrEditTest","Transaction",null,Context.Request.Scheme)','Lesson Registry')" class="btn btn-success text-white"><i class="fas fa-plus"></i>New Question</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                <td>
+                       
+                        @Html.DisplayFor(modelItem=>item.QNumber)
+
+                        
+                    </td>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem=>item.QText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QAnswer)
+                    </td>
+                    <td>
+                        *@Html.DisplayFor(modelItem => item.option1)*<br>
+                        *@Html.DisplayFor(modelItem => item.option2)*<br>
+                        *@Html.DisplayFor(modelItem => item.option3)*<br>
+                        *@Html.DisplayFor(modelItem => item.option4)*<br>
+
+                    </td>
+
+                    <td>
+                        <div>
+                      
+                            <a onclick="showInPopup('@Url.Action("AddOrEditTest","Transaction",new {id=item.TestID},Context.Request.Scheme)','Edit Registry')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Edit</a>
+                            <form asp-action="DeleteTest" asp-route-id="@item.TestID" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                <input type="hidden" asp-for="@item.TestID" />
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </form>
+                          
+
+                        </div>
+                    </td>
+
+
+                   
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

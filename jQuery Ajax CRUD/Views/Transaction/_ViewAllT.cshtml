@@ -1,0 +1,125 @@
+﻿@model IEnumerable<jQuery_Ajax_CRUD.Models.TeachersModel>
+
+   
+<form  asp-action="IndexT" method="get">
+    
+    
+      <select class="col-md-2" name="searchString" value="@ViewData["CurrentFilter"]" id="Class"onchange="this.form.submit()">
+        <option value="">-Select Class-</option>
+        <option value="1">ClassA</option>
+        <option value="2">ClassB</option>
+        <option value="3">ClassC</option>
+
+      </select>
+      <input type="hidden" value="Search" />
+      <a asp-action="IndexT">All Teachers</a>
+</form>
+
+
+
+
+<div class="col-md-8 offset-md-2">
+
+    <h1 class="text-center"><i class="fa-solid fa-chalkboard-user"></i>Teacher Registry Form</h1>
+
+
+    <table class="table">
+        <thead class="table thead-light">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model=>model.Class)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.A)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.DateOfBirth)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model=>model.Gender)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Surname)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Age)
+
+                </th>
+
+
+                <th>
+                    <a onclick="showInPopup('@Url.Action("AddOrEditT","Transaction",null,Context.Request.Scheme)','Teacher Registry')" class="btn btn-success text-white"><i class="fas fa-plus"></i> New Registry</a>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem=>item.Class)
+                    </td>
+                <td>
+                       
+                        @Html.DisplayFor(modelItem=>item.A)
+
+                        
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem=>item.DateOfBirth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem=>item.Gender)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Surname)
+                    </td>
+
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                    @Html.DisplayFor(modelItem => item.Age)
+
+                </td>
+                
+
+                
+
+                    <td>
+                        <div>
+                      
+                            <a onclick="showInPopup('@Url.Action("AddOrEditT","Transaction",new {id=item.ID},Context.Request.Scheme)','Edit Registry')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Edit</a>
+                            <form asp-action="DeleteT" asp-route-id="@item.ID" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                                <input type="hidden" asp-for="@item.ID" />
+                                <input type="submit" value="Delete" class="btn btn-danger" />
+                            </form>
+                            <a onclick="showInPopup('@Url.Action("ChangeClassT","Transaction",new {id=item.ID},Context.Request.Scheme)','Change Class')" class="btn btn-success text-white"> Move</a>
+
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

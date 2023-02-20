@@ -1,0 +1,83 @@
+﻿@model jQuery_Ajax_CRUD.Models.BulkData
+
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2-bootstrap-css/1.4.6/select2-bootstrap.min.css" />
+
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+           
+        </div>
+        <input id="test" style="width:100%;height:200%;" placeholder="type a number, scroll for more results" />
+        
+
+        
+    </div>
+   
+    <!--[if lt IE 9]>
+     <script type="text/javascript" src='//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+    <![endif]-->
+    <!--[if gte IE 9]><!-->
+    <script type="text/javascript" src='//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+    <!--<![endif]-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.15.0/lodash.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/3.5.4/select2.min.js"></script>
+
+    <script>
+
+
+   
+
+
+        $("#test").select2({
+    placeholder: "Type to find a Bulkdata",
+    allowClear: true,
+    minimumInputLength: 0,
+    minimumResultsForSearch: 20,
+    maximumResultsForSearch:20,
+    maximumInputLength: 20,
+    ajax: {
+        delay: 250 ,
+        cache: false,
+        dataType: "json",
+        type: "GET",
+        url: "/Transaction/BulkDrop2",
+        data: function(searchTerm){
+            return { results: searchTerm };   
+        },
+        results: function(data){
+            return { results: data };
+        }
+    },
+    formatResult: contractFormatResult,
+    formatSelection: contractFormatSelection,
+    escapeMarkup: function (m) { return m; }
+});
+
+
+function contractFormatResult(contract) {
+    
+        var markup = "<table class='contract-result'><tr>";
+    if (contract.name !== undefined) {
+        markup += "<div class='contract-name'>"+contract.bulkID+' '+ contract.name +' ' + contract.surname+"</div>";
+    }
+    markup += "</td></tr></table>"
+    return markup;
+}
+
+function contractFormatSelection(contract) {
+    return contract.bulkID;
+    return contract.name;
+    return contract.surname;
+    
+}
+
+
+    </script>
+</body>
+</html>

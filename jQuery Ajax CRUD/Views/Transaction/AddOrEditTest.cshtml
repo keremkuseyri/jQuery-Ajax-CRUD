@@ -1,0 +1,99 @@
+﻿@model jQuery_Ajax_CRUD.Models.TestModel
+
+
+@{ Layout = null; }
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddOrEditTest" asp-route-id="@Model.TestID" onsubmit="return jQueryAjaxPost(this);">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TestID" />
+            
+            
+           
+          <div class="form-group">
+                <label asp-for="QNumber" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        
+                    </div>
+                    <input asp-for="QNumber" class="form-control" />
+                </div>
+                <span asp-validation-for="QNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QText" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        
+                    </div>
+                    <input asp-for="QText" class="form-control" />
+                </div>
+                <span asp-validation-for="QText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="QAnswer" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        
+                    </div>
+                    <input asp-for="QAnswer" class="form-control" />
+                </div>
+                <span asp-validation-for="QAnswer" class="text-danger"></span>
+            </div>   
+            <div class="form-group">
+                <label asp-for="option1" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        
+                    </div>
+                    <input asp-for="option1" class="form-control" />
+                </div>
+                <span asp-validation-for="option1" class="text-danger"></span>
+            </div> 
+            <div class="form-group">
+                <label asp-for="option2" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        
+                    </div>
+                    <input asp-for="option2" class="form-control" />
+                </div>
+                <span asp-validation-for="option2" class="text-danger"></span>
+            </div> 
+            <div class="form-group">
+                <label asp-for="option3" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        
+                    </div>
+                    <input asp-for="option3" class="form-control" />
+                </div>
+                <span asp-validation-for="option3" class="text-danger"></span>
+            </div> 
+            <div class="form-group">
+                <label asp-for="option4" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        
+                    </div>
+                    <input asp-for="option4" class="form-control" />
+                </div>
+                <span asp-validation-for="option4" class="text-danger"></span>
+            </div> 
+
+
+    
+
+       
+
+
+                          
+            <div class="form-group">
+                <div class="col-md-6 offset-md-3">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

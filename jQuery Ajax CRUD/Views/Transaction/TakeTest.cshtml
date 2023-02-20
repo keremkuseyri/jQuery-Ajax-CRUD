@@ -1,0 +1,32 @@
+﻿@model IEnumerable<jQuery_Ajax_CRUD.Models.TestModel>
+
+@{
+    ViewData["Title"] = "TakeTest";
+}
+
+
+
+<div id="view-all">
+    @await Html.PartialAsync("_TakeTestR", Model)
+</div>
+
+<div class="modal fade" tabindex="-1" role="dialog" id="form-modal"draggable="true"data-backdrop="static" data-keyboard="false">
+    <div class="vertical-alignment-helper">
+    <div class="modal-dialog vertical-align-center" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title"></h5>
+                
+            </div>
+            <div class="modal-body">
+
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+@section Scripts{
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

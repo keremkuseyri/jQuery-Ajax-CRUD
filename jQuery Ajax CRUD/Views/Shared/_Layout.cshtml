@@ -1,0 +1,127 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewData["Title"] - Home</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+
+
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Transaction" asp-action="Index">Students</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item ">
+                            <a class="nav-link"asp-area="" asp-controller="Transaction" asp-action="ClassA">Classes</a>
+                       
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Transaction" asp-action="IndexT">Teachers</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Transaction" asp-action="IndexL">Lessons</a>
+                       
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Transaction" asp-action="Grades">Grades</a>
+                       
+                        </li>
+                        <li class="nav-item">
+                             <a class="nav-link" asp-area="" asp-controller="Transaction" asp-action="IndexTest">TestEditor</a>
+
+                        </li>
+                        <li class="nav_item">
+                             <a class="nav-link" asp-area="" asp-controller="Transaction" asp-action="TakeTest">StdTest</a>
+                        </li> 
+                        <li class="nav_item">
+                             <a class="nav-link" asp-area="" asp-controller="Transaction" asp-action="TestResultsView">Results</a>
+                        </li>
+                        
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Transaction" asp-action="MultipleEditor">MultipleEditor</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Transaction" asp-action="BulkDrop">bulkdata</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Transaction" asp-action="IbanValidation">IBAN Validator</a>
+                        </li>
+                        <li class="nav-item">
+                             <a class="nav-link" asp-area="" asp-controller="Transaction" asp-action="Ticket">Tickets</a>
+                        </li>
+                        
+                    
+                         </ul>
+                         <span class="nav-item" >
+                            <a class="btn btn-success" asp-area="" asp-controller="Login" asp-action="Login">Login</a>
+                        </span>
+                    
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            
+            @RenderBody()
+        </main>
+        
+    </div>  
+
+
+   <div class="modal fade" tabindex="-1" role="dialog" id="form-modal">
+        
+       <div class="modal-dialog justify-content-center" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                </div>
+            </div>
+        </div>
+    </div>
+   
+
+ <div class="loaderbody" id="loaderbody">
+        <div class="loader"></div>
+    </div>
+ 
+
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2022 - CRUD - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+    <script> $(document).ready(function() {
+  $('li.active').removeClass('active').removeAttr('aria-current');
+  $('a[href="' + location.pathname + '"]').closest('li').addClass('active').attr('aria-current', 'page'); });
+  </script>
+
+</body>
+</html>

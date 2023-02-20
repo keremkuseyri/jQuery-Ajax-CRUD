@@ -1,0 +1,129 @@
+﻿@model IEnumerable<jQuery_Ajax_CRUD.Models.TransactionModel>
+
+
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.dropbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+</head>
+<body>
+
+<div class="dropdown">
+  <button class="dropbtn">Classes</button>
+  <div class="dropdown-content">
+    <a href="ClassA">ClassA</a>
+    <a href="ClassB">ClassB</a>
+    <a href="ClassC">ClassC</a>
+  </div>
+</div>
+
+</body>
+
+    
+        <div class="col-md-8 offset-md-2">
+
+        <h1 class="text-center"> <i class="fas fa-user-graduate"></i>CLASS C</h1>
+
+
+        <table class="table">
+            <thead class="thead-light">
+                <tr>
+                    <th>
+                         <a asp-action="ClassC" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model=>model.SWIFTCode)</a>
+                    </th>
+                    <th>
+                        <a asp-action="ClassC" asp-route-sortOrder="@ViewData["GenderSortParm"]">@Html.DisplayNameFor(model=>model.BankName)</a>
+                    </th>
+                    <th>                              
+                        <a asp-action="ClassC" asp-route-sortOrder="@ViewData["NameSortParm"]">@Html.DisplayNameFor(model => model.AccountNumber)</a>
+                    </th>
+                    <th>
+                     <a asp-action="ClassC" asp-route-sortOrder="@ViewData["SurnameSortParm"]">@Html.DisplayNameFor(model => model.BeneficiaryName)</a>
+                     </th>
+                    <th>
+                          <a asp-action="ClassC" asp-route-sortOrder="@ViewData["NumberSortParm"]">@Html.DisplayNameFor(model => model.Amount)
+                    </a>
+                   
+                        </th>
+                    <th>
+                        <a asp-action="ClassC" asp-route-sortOrder="@ViewData["DateSortParm"]">@Html.DisplayNameFor(model => model.Date)
+                    </a>
+                        </th>
+                        <th>
+                                           <a asp-action="ClassC" asp-route-sortOrder="@ViewData["NumberSortParm"]"> @Html.DisplayNameFor(model => model.Age)</a>
+
+                   
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                            @Html.DisplayFor(modelItem=>item.SWIFTCode)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem=>item.BankName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.AccountNumber)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BeneficiaryName)
+                        </td>
+                       
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Amount)
+                        </td>
+                         <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                                                 <td>
+                            @Html.DisplayFor(modelItem => item.Age)
+                        </td>
+
+                       
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
